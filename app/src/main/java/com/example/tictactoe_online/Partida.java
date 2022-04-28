@@ -1,6 +1,16 @@
 package com.example.tictactoe_online;
 
-public class Partida {
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+
+public class Partida extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_partida);
+    }
 
     String creador = "";
     String jugador = "";
@@ -16,7 +26,6 @@ public class Partida {
     String casella_9 = "";
 
     public Partida() {
-
     }
 
     public Partida(String creador) {
@@ -37,7 +46,6 @@ public class Partida {
         this.casella_8 = casella_8;
         this.casella_9 = casella_9;
     }
-
     public String getCreador() {
         return creador;
     }
@@ -134,3 +142,4 @@ public class Partida {
         this.casella_9 = casella_9;
     }
 }
+

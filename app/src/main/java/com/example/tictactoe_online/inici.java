@@ -18,3 +18,5 @@ public class inici extends AppCompatActivity {
         startActivity(new Intent(this, MainActivity.class));
     }
 }
+
+
