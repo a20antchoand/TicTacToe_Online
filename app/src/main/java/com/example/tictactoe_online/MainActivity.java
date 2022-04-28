@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -43,9 +44,14 @@ public class MainActivity extends AppCompatActivity implements ReadData, WriteDa
 
         button.setOnClickListener(l -> {
 
-            Partida partida = new Partida();
+            EditText et = findViewById(R.id.editTextTextPersonName);
 
-            writeOneDocument(FirebaseFirestore.getInstance().collection("partidas").document("Partida_" + Math.random()), partida, this::actualizarPartidas);
+            if (!et.getText().toString().equals("")) {
+                Partida partida = new Partida(et.getText().toString());
+                writeOneDocument(FirebaseFirestore.getInstance().collection("partidas").document("Partida_" + Math.random()), partida, this::actualizarPartidas);
+            } else {
+                Toast.makeText(this, "Has d'introduir un nom de jugador", Toast.LENGTH_SHORT).show();
+            }
 
         });
 
@@ -85,7 +91,7 @@ public class MainActivity extends AppCompatActivity implements ReadData, WriteDa
 
     private void addListElementPartidas(Partida partida, DocumentSnapshot document) {
 
-        String nom = partida.getCreador().substring(0, 1).toUpperCase() + partida.getCreador().substring(1);
+        String nom = partida.getCreador();
         String uid = document.getId();
         listElements.add(new ListElementPartidas(
                 nom ,

@@ -2,8 +2,8 @@ package com.example.tictactoe_online;
 
 public class Partida {
 
-    String creador = "Marc";
-    String jugador = "Toni";
+    String creador = "";
+    String jugador = "";
     String ganador = "";
     String casella_1 = "";
     String casella_2 = "";
@@ -17,6 +17,10 @@ public class Partida {
 
     public Partida() {
 
+    }
+
+    public Partida(String creador) {
+        this.creador = creador;
     }
 
     public Partida(String creador, String jugador, String ganador, String casella_1, String casella_2, String casella_3, String casella_4, String casella_5, String casella_6, String casella_7, String casella_8, String casella_9) {
