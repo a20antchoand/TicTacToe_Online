@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.example.piazza.recyclerView.treballadors.ListElementPartidas;
 import androidx.recyclerview.widget.RecyclerView;
 
 
@@ -67,7 +66,7 @@ public class ListAdapterPartidas extends RecyclerView.Adapter<ListAdapterPartida
         }
 
         void bindData (final ListElementPartidas item) {
-            nom.setText(item.getNom() + " " + item.getCognom());
+            nom.setText(item.getNom());
 
 
         }
