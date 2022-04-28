@@ -1,4 +1,4 @@
-package com.example.piazza.recyclerView.treballadors;
+package com.example.tictactoe_online.recyclerView;
 
 import android.graphics.Bitmap;
 
@@ -8,11 +8,9 @@ public class ListElementPartidas implements Serializable {
 
     String uid;
     String nom;
-    String cognom;
 
-    public ListElementPartidas(String nom, String cognom, String uid) {
+    public ListElementPartidas(String nom, String uid) {
         this.nom = nom;
-        this.cognom = cognom;
         this.uid = uid;
     }
 
@@ -22,14 +20,6 @@ public class ListElementPartidas implements Serializable {
 
     public void setNom(String nom) {
         this.nom = nom;
-    }
-
-    public String getCognom() {
-        return cognom;
-    }
-
-    public void setCognom(String cognom) {
-        this.cognom = cognom;
     }
 
     public String getUid() {
