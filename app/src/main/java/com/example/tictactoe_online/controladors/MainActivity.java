@@ -1,24 +1,30 @@
-package com.example.tictactoe_online;
+package com.example.tictactoe_online.controladors;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.tictactoe_online.R;
+import com.example.tictactoe_online.commons.ReadData;
+import com.example.tictactoe_online.commons.WriteData;
+import com.example.tictactoe_online.clases.Partida;
 import com.example.tictactoe_online.recyclerView.ListAdapterPartidas;
 import com.example.tictactoe_online.recyclerView.ListElementPartidas;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -63,10 +69,25 @@ public class MainActivity extends AppCompatActivity implements ReadData, WriteDa
 
     }
 
-    private void showName(ListElementPartidas listElementPartidas, View view) {
+    private void showName(ListElementPartidas listElementPartidas) {
 
-        System.out.println(listElementPartidas.getNom());
+        EditText et = findViewById(R.id.editTextTextPersonName);
 
+        if (!et.getText().toString().equals("")) {
+
+            System.out.println("AQUI ESTIC");
+
+            Partida partida = listElementPartidas.getPartida();
+            partida.setJugador(findViewById(R.id.nom).toString());
+
+            writeOneDocument(FirebaseFirestore.getInstance().collection("partidas").document(listElementPartidas.getDocref()), partida, null);
+
+            Intent intent = new Intent(this, PartidaControlador.class);
+            intent.putExtra("partida", listElementPartidas.getDocref());
+            startActivity(intent);
+        } else {
+            Toast.makeText(this, "Has d'introduir un nom de jugador", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void actualizarPartidas(Task<Void> voidTask) {
@@ -91,11 +112,9 @@ public class MainActivity extends AppCompatActivity implements ReadData, WriteDa
 
     private void addListElementPartidas(Partida partida, DocumentSnapshot document) {
 
-        String nom = partida.getCreador();
-        String uid = document.getId();
         listElements.add(new ListElementPartidas(
-                nom ,
-                uid));
+                document.getId() ,
+                partida));
 
 
         listAdapter.notifyDataSetChanged();

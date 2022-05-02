@@ -10,10 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TicTacToe_Online">
         <activity
-            android:name=".Partida"
+            android:name=".controladors.PartidaControlador"
             android:exported="true" />
         <activity
-            android:name=".inici"
+            android:name=".controladors.inici"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,8 +22,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
-            android:exported="true"></activity>
+            android:name=".controladors.MainActivity"
+            android:exported="true" />
     </application>
 
 </manifest>

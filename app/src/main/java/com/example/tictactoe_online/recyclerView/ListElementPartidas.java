@@ -2,33 +2,34 @@ package com.example.tictactoe_online.recyclerView;
 
 import android.graphics.Bitmap;
 
+import com.example.tictactoe_online.clases.Partida;
+import com.google.firebase.firestore.DocumentReference;
+
 import java.io.Serializable;
 
 public class ListElementPartidas implements Serializable {
 
-    String uid;
-    String nom;
+    String docref;
+    Partida partida;
 
-    public ListElementPartidas(String nom, String uid) {
-        this.nom = nom;
-        this.uid = uid;
+    public ListElementPartidas(String docRef, Partida partida) {
+        this.docref = docRef;
+        this.partida = partida;
     }
 
-    public String getNom() {
-        return nom;
+    public String getDocref() {
+        return docref;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
+    public void setDocref(String docref) {
+        this.docref = docref;
     }
 
-    public String getUid() {
-        return uid;
+    public Partida getPartida() {
+        return partida;
     }
 
-    public void setUid(String uid) {
-        this.uid = uid;
+    public void setPartida(Partida partida) {
+        this.partida = partida;
     }
-
-
 }

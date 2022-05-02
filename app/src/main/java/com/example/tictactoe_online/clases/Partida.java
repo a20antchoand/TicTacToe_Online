@@ -1,16 +1,6 @@
-package com.example.tictactoe_online;
+package com.example.tictactoe_online.clases;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.os.Bundle;
-
-public class Partida extends AppCompatActivity {
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_partida);
-    }
+public class Partida{
 
     String creador = "";
     String jugador = "";
@@ -141,5 +131,7 @@ public class Partida extends AppCompatActivity {
     public void setCasella_9(String casella_9) {
         this.casella_9 = casella_9;
     }
+
+
 }
 

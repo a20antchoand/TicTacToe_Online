@@ -22,7 +22,7 @@ public class ListAdapterPartidas extends RecyclerView.Adapter<ListAdapterPartida
     final onItemClickListener listener;
 
     public interface onItemClickListener {
-        void onItemClickListener(ListElementPartidas item, View itemview) throws FirebaseAuthException;
+        void onItemClickListener(ListElementPartidas item) throws FirebaseAuthException;
     }
 
     public ListAdapterPartidas(List<ListElementPartidas> itemList, Context context, onItemClickListener listener) {
@@ -66,8 +66,14 @@ public class ListAdapterPartidas extends RecyclerView.Adapter<ListAdapterPartida
         }
 
         void bindData (final ListElementPartidas item) {
-            nom.setText(item.getNom());
-
+            nom.setText(item.getPartida().getCreador());
+            itemView.setOnClickListener(l -> {
+                try {
+                    listener.onItemClickListener(item);
+                } catch (FirebaseAuthException e) {
+                    e.printStackTrace();
+                }
+            });
 
         }
 

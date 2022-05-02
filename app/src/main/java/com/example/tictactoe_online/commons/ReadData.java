@@ -1,4 +1,4 @@
-package com.example.tictactoe_online;
+package com.example.tictactoe_online.commons;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.firebase.firestore.DocumentReference;

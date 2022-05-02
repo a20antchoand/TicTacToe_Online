@@ -1,10 +1,12 @@
-package com.example.tictactoe_online;
+package com.example.tictactoe_online.controladors;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+
+import com.example.tictactoe_online.R;
 
 public class inici extends AppCompatActivity {
 
