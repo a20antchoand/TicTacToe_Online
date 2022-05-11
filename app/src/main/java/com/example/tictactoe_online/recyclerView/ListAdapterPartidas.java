@@ -66,7 +66,7 @@ public class ListAdapterPartidas extends RecyclerView.Adapter<ListAdapterPartida
         }
 
         void bindData (final ListElementPartidas item) {
-            nom.setText(item.getPartida().getCreador());
+            nom.setText(item.getPartida().getJugadors().get(0));
             itemView.setOnClickListener(l -> {
                 try {
                     listener.onItemClickListener(item);

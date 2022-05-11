@@ -1,9 +1,11 @@
 package com.example.tictactoe_online.clases;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Partida{
 
-    String creador = "";
-    String jugador = "";
+    List<String> jugadors = new ArrayList<>();
     String ganador = "";
     String casella_1 = "";
     String casella_2 = "";
@@ -19,12 +21,12 @@ public class Partida{
     }
 
     public Partida(String creador) {
-        this.creador = creador;
+        this.jugadors.add(creador);
     }
 
     public Partida(String creador, String jugador, String ganador, String casella_1, String casella_2, String casella_3, String casella_4, String casella_5, String casella_6, String casella_7, String casella_8, String casella_9) {
-        this.creador = creador;
-        this.jugador = jugador;
+        this.jugadors.add(creador);
+        this.jugadors.add(jugador);
         this.ganador = ganador;
         this.casella_1 = casella_1;
         this.casella_2 = casella_2;
@@ -36,20 +38,13 @@ public class Partida{
         this.casella_8 = casella_8;
         this.casella_9 = casella_9;
     }
-    public String getCreador() {
-        return creador;
+
+    public List<String> getJugadors() {
+        return jugadors;
     }
 
-    public void setCreador(String creador) {
-        this.creador = creador;
-    }
-
-    public String getJugador() {
-        return jugador;
-    }
-
-    public void setJugador(String jugador) {
-        this.jugador = jugador;
+    public void setJugadors(List<String> jugadors) {
+        this.jugadors = jugadors;
     }
 
     public String getGanador() {

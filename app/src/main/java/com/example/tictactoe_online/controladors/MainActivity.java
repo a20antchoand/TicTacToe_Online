@@ -78,12 +78,13 @@ public class MainActivity extends AppCompatActivity implements ReadData, WriteDa
             System.out.println("AQUI ESTIC");
 
             Partida partida = listElementPartidas.getPartida();
-            partida.setJugador(findViewById(R.id.nom).toString());
+            partida.getJugadors().add(et.getText().toString());
 
             writeOneDocument(FirebaseFirestore.getInstance().collection("partidas").document(listElementPartidas.getDocref()), partida, null);
 
             Intent intent = new Intent(this, PartidaControlador.class);
             intent.putExtra("partida", listElementPartidas.getDocref());
+            intent.putExtra("usuari", et.getText().toString());
             startActivity(intent);
         } else {
             Toast.makeText(this, "Has d'introduir un nom de jugador", Toast.LENGTH_SHORT).show();

@@ -17,6 +17,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 public class PartidaControlador extends AppCompatActivity implements ReadData, WriteData {
 
     String idPartida;
+    String idUsuari;
     Partida partida;
 
     @Override
@@ -25,6 +26,7 @@ public class PartidaControlador extends AppCompatActivity implements ReadData, W
         setContentView(R.layout.activity_partida);
 
         idPartida = getIntent().getStringExtra("partida");
+        idUsuari = getIntent().getStringExtra("usuari");
 
         getOneDocument(FirebaseFirestore.getInstance().collection("partidas").document(idPartida), this::guardarPartida);
 
@@ -44,7 +46,7 @@ public class PartidaControlador extends AppCompatActivity implements ReadData, W
 
                 partida = documentSnapshotTask.getResult().toObject(Partida.class);
 
-                System.out.println(partida.getCreador());
+                System.out.println(partida.getJugadors().get(0));
 
             }
 
@@ -54,7 +56,13 @@ public class PartidaControlador extends AppCompatActivity implements ReadData, W
 
     @Override
     public boolean onSupportNavigateUp() {
-        partida.setJugador("");
+
+        if (partida.getJugadors().get(0).equals(idUsuari)) {
+            partida.getJugadors().remove(0);
+        } else {
+            partida.getJugadors().remove(1);
+        }
+
         writeOneDocument(FirebaseFirestore.getInstance().collection("partidas").document(idPartida), partida);
         onBackPressed();
         return super.onSupportNavigateUp();
